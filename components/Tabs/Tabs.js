@@ -8,10 +8,13 @@ class Tabs{
     this.current = this.links[0].dataset.tab
     container.addEventListener('click', (e) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
       if(e.target.dataset.tab !== this.current && e.target.dataset.tab){  
         this.select()
         this.current = e.target.dataset.tab
       }
+=======
+>>>>>>> parent of 061854e... fixed bug where selecting a selected tab would deselect it
 =======
 >>>>>>> parent of 061854e... fixed bug where selecting a selected tab would deselect it
       this.select()
