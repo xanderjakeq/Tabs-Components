@@ -9,6 +9,7 @@ class Tabs{
     container.addEventListener('click', (e) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       if(e.target.dataset.tab !== this.current && e.target.dataset.tab){  
         this.select()
         this.current = e.target.dataset.tab
@@ -19,11 +20,18 @@ class Tabs{
 >>>>>>> parent of 061854e... fixed bug where selecting a selected tab would deselect it
       this.select()
       this.current = e.target.dataset.tab
+=======
+      if(e.target.dataset.tab !== this.current){  
+        this.select()
+        this.current = e.target.dataset.tab
+      }
+>>>>>>> 061854e6488a66e7b9c5d2555a03ebabb2fd5d13
     })
   }
   select(){
     this.newLinks.forEach(link => {
-      console.log(link.data, this.current)
+      // console.log(link.data, this.current)
+      // console.log(this.current)
       if(link.data === this.current){
         link.deselect()
       }
