@@ -7,13 +7,16 @@ class Tabs{
 
     this.current = this.links[0].dataset.tab
     container.addEventListener('click', (e) => {
-      this.select()
-      this.current = e.target.dataset.tab
+      if(e.target.dataset.tab !== this.current){  
+        this.select()
+        this.current = e.target.dataset.tab
+      }
     })
   }
   select(){
     this.newLinks.forEach(link => {
-      console.log(link.data, this.current)
+      // console.log(link.data, this.current)
+      // console.log(this.current)
       if(link.data === this.current){
         link.deselect()
       }
