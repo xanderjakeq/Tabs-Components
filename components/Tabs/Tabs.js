@@ -1,3 +1,20 @@
+class Tabs{
+  constructor(container){
+    this.links = container.querySelectorAll('.tabs-link')
+    this.links.forEach(link => new TabLink(link))
+    this.links[0].classList.add('tabs-link-selected')
+
+    this.current = this.links[0].dataset.tab
+    container.addEventListener('click', (e) => {
+      console.log(e.target.dataset.tab)
+      this.select()
+    })
+  }
+  select(){
+
+  }
+}
+
 
 class TabLink {
   constructor(element) {
@@ -24,11 +41,11 @@ class TabLink {
     const links = document.querySelectorAll('.tabs-link')
     // Using a loop or the forEach method remove the 'tabs-link-selected' class from all of the links
     // Array.from(links).forEach();
-    console.log(links)
-    links.forEach(link => {
-      console.log('remove selected class')
-      link.classList.remove('tabs-link-selected')
-    })
+    
+    // links.forEach(link => {
+    //   link.classList.remove('tabs-link-selected')
+    // })
+
 
     // Add a class named "tabs-link-selected" to this link
     // this.element;
@@ -36,6 +53,10 @@ class TabLink {
     
     // Call the select method on the item associated with this link
     this.tabItem.select()
+  }
+
+  deselect(){
+    this.element.classList.remove('tabs-link-selected')
   }
 }
 
@@ -68,5 +89,9 @@ class TabItem {
 
 */
 
-const links = document.querySelectorAll('.tabs-link');
- links.forEach( link => new TabLink(link) )
+// const links = document.querySelectorAll('.tabs-link');
+//  links.forEach( link => new TabLink(link) )
+
+
+const containers = document.querySelectorAll('.tabs')
+containers.forEach(container => new Tabs(container))
