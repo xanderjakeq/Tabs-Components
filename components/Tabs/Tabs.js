@@ -1,17 +1,23 @@
 class Tabs{
   constructor(container){
     this.links = container.querySelectorAll('.tabs-link')
-    this.links.forEach(link => new TabLink(link))
+    // collect TabLink Objects
+    this.newLinks = Array.from(this.links).map(link => new TabLink(link))
     this.links[0].classList.add('tabs-link-selected')
 
     this.current = this.links[0].dataset.tab
     container.addEventListener('click', (e) => {
-      console.log(e.target.dataset.tab)
       this.select()
+      this.current = e.target.dataset.tab
     })
   }
   select(){
-
+    this.newLinks.forEach(link => {
+      console.log(link.data, this.current)
+      if(link.data === this.current){
+        link.deselect()
+      }
+    })
   }
 }
 
@@ -57,6 +63,7 @@ class TabLink {
 
   deselect(){
     this.element.classList.remove('tabs-link-selected')
+    this.tabItem.deselect()
   }
 }
 
@@ -72,10 +79,14 @@ class TabItem {
     // const items;
     const items = document.querySelectorAll('.tabs-item')
     // Remove the class "tabs-item-selected" from each element
-    items.forEach(item => item.classList.remove('tabs-item-selected'))
+    // items.forEach(item => item.classList.remove('tabs-item-selected'))
     // Add a class named "tabs-item-selected" to this element
     //this.element;
     this.element.classList.add('tabs-item-selected')
+  }
+
+  deselect(){
+    this.element.classList.remove('tabs-item-selected')
   }
 }
 
