@@ -7,17 +7,17 @@ class Tabs{
 
     this.current = this.links[0].dataset.tab
     container.addEventListener('click', (e) => {
+      console.log(e.target.dataset.tab)
       if(e.target.dataset.tab !== this.current && e.target.dataset.tab){  
         this.select()
         this.current = e.target.dataset.tab
       }
-      this.select()
-      this.current = e.target.dataset.tab
     })
   }
   select(){
     this.newLinks.forEach(link => {
-      console.log(link.data, this.current)
+      // console.log(link.data, this.current)
+      // console.log(this.current)
       if(link.data === this.current){
         link.deselect()
       }
@@ -95,13 +95,9 @@ class TabItem {
 }
 
 /* START HERE: 
-
 - Select all classes named ".tabs-link" and assign that value to the links variable
-
 - With your selection in place, now chain a .forEach() method onto the links variable to iterate over the DOM NodeList
-
 - In your .forEach() method's callback function, return a new instance of TabLink and pass in each link as a parameter
-
 */
 
 // const links = document.querySelectorAll('.tabs-link');
